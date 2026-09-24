@@ -23,7 +23,7 @@ $books = $conn->query("SELECT b.*, c.name AS category_name FROM books b LEFT JOI
   </nav>
 </header>
 
-<section class="hero">
+<section class="Hero">
   <div class="hero-content">
     <p class="eyebrow">EST. 1985 • NEIGHBOURHOOD BOOKSTORE</p>
     <h1>Find your next<br><span>great read.</span></h1>
