@@ -98,7 +98,7 @@ $books = $conn->query("SELECT b.*, c.name AS category_name FROM books b LEFT JOI
 </section>
 
 <footer>
-  <b>📚 Fakir Chand Book Store</b>
+  <b>📚 Fakir Chand Book Store <b>
   <p>© <?= date('Y') ?> Your neighbourhood destination for books of every kind.</p>
 </footer>
 
