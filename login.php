@@ -1,0 +1,7 @@
+<?php
+session_start(); require_once "db.php"; $error="";
+if($_SERVER['REQUEST_METHOD']==='POST'){
+$email=trim($_POST['email']); $pass=$_POST['password']; $s=$conn->prepare("SELECT id,name,password FROM users WHERE email=?"); $s->bind_param("s",$email); $s->execute(); $u=$s->get_result()->fetch_assoc();
+if($u && password_verify($pass,$u['password'])){$_SESSION['user_id']=$u['id'];$_SESSION['user_name']=$u['name'];header("Location:index.php");exit;} $error="Invalid email or password.";
+}
+?><!doctype html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Login</title><link rel="stylesheet" href="css/style.css"></head><body><header class="navbar"><a class="logo" href="index.php">📚 Fakir Chand</a><nav><a href="index.php">Home</a><a href="books.php">Books</a><a href="register.php">Register</a></nav></header><main class="form-wrap"><div class="form-card"><p class="eyebrow">WELCOME BACK</p><h1>Sign in.</h1><?php if($error):?><div class="error"><?=htmlspecialchars($error)?></div><?php endif;?><form method="post"><label>Email<input type="email" name="email" required></label><label>Password<input type="password" name="password" required></label><button class="btn full">Login</button></form><p>New reader? <a href="register.php">Create account</a></p></div></main></body></html>
